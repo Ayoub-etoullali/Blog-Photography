@@ -1,0 +1,33 @@
+###
+GET http://localhost:3000/articles
+
+###
+GET http://localhost:3000/articles/5
+Accept: application/json
+
+
+###
+DELETE http://localhost:3000/articles/5
+Content-Type: application/json
+
+
+###
+POST http://localhost:3000/articles
+Content-Type: application/json
+
+{
+    "titre":"aa",
+            "content":"fdghethtr",
+            "image":"https://picsum.photos/200/300"
+  }
+
+
+###
+PATCH  http://localhost:3000/articles/1
+Content-Type: application/json
+
+{
+    "titre":"hgdh",
+            "content":"hvdb",
+            "image":"hev f"
+  }

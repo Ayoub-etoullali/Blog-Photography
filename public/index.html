@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/5/darkly/bootstrap.css"
+    />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <title>Document</title>
+  </head>
+  <body>
+  
+      <nav class="navbar">
+          <img src="https://cdn.pixabay.com/photo/2014/09/18/22/42/letters-451517_960_720.jpg" class="logo" alt="" width="3%">
+          <ul class="links-container">
+              <li class="link-item"><a href="./index.html" class="link">HOME</a></li>
+              <li class="link-item"><a href="" class="link">EDITOR</a></li>
+              <li class="link-item"><a href="" class="link">ABOUT US</a></li>
+          </ul>
+      </nav>
+  
+      <header class="header">
+          <div class="content">
+              <h1 class="heading">
+                  <span class="small">welcome to</span>
+                  blog
+                  <span class="no-fill">Photography </span>
+              </h1>
+          </div>
+      </header>
+  
+      <!-- blog section -->
+      <section class="blogs-section">
+          <!-- <div class="blog-card">
+              <img src="img/header.png" class="blog-image" alt="">
+              <h1 class="blog-title">Lorem ipsum dolor sit amet consectetur.</h1>
+              <p class="blog-overview">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt incidunt fugiat quos porro repellat harum. Adipisci tempora corporis rem cum.</p>
+              <a href="/" class="btn dark">read</a>
+          </div> -->
+      </section>
+
+
+    <!----------------------card------------------------------>
+    <div class="container">
+      <div class="row articles"></div>
+
+      <div id="template" style="display: none">
+        <div class="card">
+          <img src="https://picsum.photos/400/300" class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title">OM SYSTEM OM-1</h5>
+            <p class="card-text">
+                The OM-1 is the brand new range-topping professional model in Olympus/OM System's well-established Micro Four Thirds mirrorless camera system.
+            </p>
+            <button class="btn btn-primary">More ...</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="jquery.js"></script>
+
+
+    <!----------------------articles------------------------------>
+    <script>
+      const url = "http://localhost:3000/articles";
+
+      $articlesContainer = $(".container > .articles");
+
+      function show(data) {
+        const $card = $("#template > .card ");
+        data.forEach((e) => {
+          const $col = $('<div class = "col-md-4"></div>');
+          const $clone = $card.clone(true);
+
+          const src = $("img", $clone).attr("src");
+
+          $("img", $clone).attr('src',e.image + '?' + e.id)
+          $(".card-title", $clone).text(e.titre);
+          $(".card-text", $clone).text(e.content);
+
+          //$(".button", $clone).text(e.body);
+
+          $col.append($clone).appendTo($articlesContainer);
+        });
+      }
+      $.getJSON(url).then(show);
+    </script>
+
+    <!----------------------commentaires------------------------------>
+    <script>
+      const url = "http://localhost:3000/commentaires";
+
+      $articlesContainer = $(".container > .articles");
+
+      function show(data) {
+        const $card = $("#template > .card ");
+        data.forEach((e) => {
+          const $col = $('<div class = "col-md-4"></div>');
+          const $clone = $card.clone(true);
+
+          const src = $("img", $clone).attr("src");
+
+          $("img", $clone).attr('src',e.commentaire + '?' + e.id)
+          $(".card-email", $clone).text(e.email);
+          $(".card-content", $clone).text(e.content);
+
+          //$(".button", $clone).text(e.body);
+
+          $col.append($clone).appendTo($articlesContainer);
+        });
+      }
+      $.getJSON(url).then(show);
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,31 @@
+###
+GET http://localhost:3000/commentaires
+
+###
+GET http://localhost:3000/commentaires/5
+Accept: application/json
+
+
+###
+DELETE http://localhost:3000/commentaires/5
+Content-Type: application/json
+
+
+###
+POST http://localhost:3000/commentaires
+Content-Type: application/json
+
+{
+    "email":"efa",
+            "content":"etetz"
+  }
+
+
+###
+PATCH  http://localhost:3000/commentaires/1
+Content-Type: application/json
+
+{
+    "email":"hgdh",
+            "content":"hvdb"
+  }
